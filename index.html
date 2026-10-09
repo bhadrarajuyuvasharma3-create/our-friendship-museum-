@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our Little Universe ♡</title>
+<style>
+:root {
+  --pink:#e879a0;
+  --rose:#c94f7c;
+  --pale:#fff1f5;
+  --cream:#fffaf8;
+  --ink:#674552;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:Georgia,"Times New Roman",serif;
+}
+button, input, textarea { font:inherit; }
+button {
+  cursor:pointer;
+  border:0;
+  border-radius:30px;
+  background:var(--rose);
+  color:white;
+  padding:12px 20px;
+  transition:transform .2s, background .2s;
+}
+button:hover { transform:translateY(-2px); background:#ad3e68; }
+header {
+  padding:20px;
+  text-align:center;
+  background:#ffe5ee;
+}
+.logo { font-size:14px; letter-spacing:3px; text-transform:uppercase; }
+nav { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-top:18px; }
+nav button { background:#fff8fa; color:var(--rose); padding:9px 14px; font-size:14px; }
+.hero {
+  min-height:76vh;
+  padding:65px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:radial-gradient(ellipse at top,#ffe1ed,#fff9fa 70%);
+  position:relative;
+  overflow:hidden;
+}
+.hero-inner { max-width:650px; position:relative; z-index:1; }
+.eyebrow { text-transform:uppercase; letter-spacing:3px; font-size:12px; }
+h1 { font-size:clamp(42px,9vw,76px); line-height:1.05; font-weight:normal; margin:22px 0; }
+h2 { font-size:clamp(30px,6vw,44px); font-weight:normal; margin:12px 0; }
+h3 { font-size:23px; font-weight:normal; }
+p { line-height:1.8; }
+.heart { color:#e879a0; }
+.script { font-style:italic; color:var(--rose); }
+.section { padding:65px 20px; text-align:center; }
+.section:nth-of-type(even) { background:#fff0f5; }
+.inner { max-width:900px; margin:auto; }
+.subtitle { max-width:540px; margin:12px auto 30px; }
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-top:28px; text-align:left; }
+.card {
+  background:white;
+  border:1px solid #f5d8e2;
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 7px 24px #a84a6910;
+}
+.emoji { font-size:34px; }
+.small { font-size:13px; opacity:.75; }
+input, textarea {
+  display:block; width:100%; padding:12px;
+  border:1px solid #edc8d6; border-radius:12px;
+  background:#fffafc; color:var(--ink); margin:8px 0 16px;
+}
+textarea { min-height:120px; resize:vertical; }
+label { display:block; text-align:left; font-size:14px; }
+.photo-grid {
+  display:grid; grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px; margin:24px 0;
+}
+.photo {
+  min-height:160px; background:#ffe7ef; border-radius:12px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:10px; overflow:hidden; position:relative;
+}
+.photo img { width:100%; height:200px; object-fit:cover; border-radius:8px; }
+.photo input { font-size:11px; }
+.photo-caption { width:100%; font-size:13px; text-align:center; }
+.letter {
+  background:white; border:1px solid #f2ccd9; border-radius:18px;
+  padding:clamp(20px,5vw,42px); text-align:left;
+  box-shadow:0 12px 40px #a84a6910;
+}
+.letter-content { white-space:pre-wrap; line-height:2; }
+.hidden { display:none; }
+.certificate {
+  background:#fffaf1; border:5px double #d9a1b4;
+  padding:32px 18px; margin:24px auto; max-width:650px;
+  outline:1px solid #e5b8c6; outline-offset:-12px;
+}
+.certificate h2 { color:#ad5677; }
+.badge { font-size:38px; }
+footer { text-align:center; padding:30px 15px; background:#ffe5ee; }
+#hearts { position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:5; }
+.float-heart {
+  position:absolute; bottom:-35px; animation:rise linear forwards;
+  opacity:.8; color:#e879a0;
+}
+@keyframes rise {
+  to { transform:translateY(-110vh) rotate(35deg); opacity:0; }
+}
+@media(min-width:600px) {
+  .photo-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
+@media print {
+  header, footer, .no-print, #hearts { display:none!important; }
+  body { background:white; }
+  .certificate { break-inside:avoid; }
+}
+</style>
+</head>
+<body>
+<div id="hearts"></div>
+<header>
+  <div class="logo">♡ a tiny place for us ♡</div>
+  <nav>
+    <button onclick="go('home')">Home</button>
+    <button onclick="go('memories')">Memories</button>
+    <button onclick="go('letter')">Secret letter</button>
+    <button onclick="go('certificate')">Our promise</button>
+    <button onclick="go('customize')">Personalize</button>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="eyebrow">a little museum of friendship</div>
+    <h1>Some souls just<br><span class="script">feel like home.</span></h1>
+    <p>For <strong id="heroFriend">my favourite human</strong>,<br>
+    from <strong id="heroYou">your forever bestie</strong>.</p>
+    <p class="heart" style="font-size:25px">♡ ∞ ♡</p>
+    <button onclick="go('memories')">Enter our little world ♡</button>
+    <p class="small">Made with love, just for you.</p>
+  </div>
+</section>
+
+<section class="section" id="welcome">
+  <div class="inner">
+    <div class="eyebrow">exhibit no. 01</div>
+    <h2>Welcome to our <span class="script">little universe</span></h2>
+    <p class="subtitle">A collection of tiny moments, silly memories,
+    and all the reasons I'm grateful that our paths crossed.</p>
+    <div class="cards">
+      <div class="card"><div class="emoji">🎀</div><h3>The beginning</h3>
+        <p>Somehow, a normal day turned into a friendship I'll always treasure.</p></div>
+      <div class="card"><div class="emoji">🧸</div><h3>The little things</h3>
+        <p>The laughs, the random talks, the inside jokes nobody else understands.</p></div>
+      <div class="card"><div class="emoji">💌</div><h3>The forever part</h3>
+        <p>No matter where life takes us, you'll always have a little place in my heart.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="memories">
+  <div class="inner">
+    <div class="eyebrow">exhibit no. 02</div>
+    <h2>Our memory <span class="script">gallery</span></h2>
+    <p class="subtitle">Add your favourite photos below. Every picture holds
+    a little piece of your story.</p>
+    <div class="no-print">
+      <label for="photos">Choose photos from your device</label>
+      <input id="photos" type="file" accept="image/*" multiple>
+      <p class="small">Photos stay in this browser session. Download or keep your originals safe.</p>
+    </div>
+    <div class="photo-grid" id="gallery">
+      <div class="photo"><div class="emoji">📷</div><p>Your favourite memory goes here</p></div>
+      <div class="photo"><div class="emoji">🌷</div><p>A moment worth keeping</p></div>
+      <div class="photo"><div class="emoji">💗</div><p>One of a million reasons</p></div>
+    </div>
+    <label for="memoryNote">A memory I never want to forget</label>
+    <textarea id="memoryNote" placeholder="Remember that time we laughed until we cried..."></textarea>
+  </div>
+</section>
+
+<section class="section" id="letter">
+  <div class="inner">
+    <div class="eyebrow">exhibit no. 03</div>
+    <h2>A letter, just <span class="script">for you</span></h2>
+    <p class="subtitle">A few words from my heart to yours.</p>
+    <button id="openLetter" onclick="revealLetter()">Open your little letter 💌</button>
+    <div id="letterPaper" class="letter hidden" style="margin-top:25px">
+      <p>To my dearest <span data-friend>favourite human</span>,</p>
+      <div class="letter-content" id="letterText">I don't think you fully understand how much your friendship means to me.
+
+Thank you for being part of my life, for the laughs, the conversations, and the memories that make ordinary days feel special.
+
+You don't have to be perfect. You don't have to have all the answers. You can always be yourself around me.
+
+No matter how busy life gets, I hope you remember that somewhere in this world, there's a person who is genuinely grateful for you.
+
+If I could choose my favourite people all over again, I'd still choose you.
+
+Here's to more memories, more laughter, more silly moments, and a friendship that keeps growing.
+
+You are loved more than this little page can ever explain. ♡</div>
+      <p class="script">Always your bestie,</p>
+      <p><strong data-you>your forever bestie</strong> ♡</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="certificate">
+  <div class="inner">
+    <div class="eyebrow">exhibit no. 04</div>
+    <h2>An official <span class="script">bestie award</span></h2>
+    <div class="certificate" id="certificatePaper">
+      <div class="badge">🏆</div>
+      <p class="eyebrow">the department of friendship</p>
+      <h2>Certificate of<br>Forever Friendship</h2>
+      <p>This certificate is lovingly presented to</p>
+      <h2 data-friend>my favourite human</h2>
+      <p>For being wonderfully, irreplaceably YOU.</p>
+      <p>In recognition of endless laughs, trusted secrets,
+      unforgettable memories, and a heart that makes life brighter.</p>
+      <p><em>Official status: Bestie for life ♡</em></p>
+      <p>Signed with love,</p>
+      <h3 data-you>your forever bestie</h3>
+      <p>♡ Friends today, friends tomorrow, friends always. ♡</p>
+    </div>
+    <button class="no-print" onclick="window.print()">Print / Save certificate as PDF</button>
+  </div>
+</section>
+
+<section class="section" id="customize">
+  <div class="inner">
+    <div class="eyebrow">make it yours</div>
+    <h2>Personalize our <span class="script">little world</span></h2>
+    <p class="subtitle">Change the names and your personal message.
+    Your changes update the page right away.</p>
+    <div class="card" style="max-width:550px;margin:auto">
+      <label for="yourName">Your name or nickname</label>
+      <input id="yourName" placeholder="e.g. Angel">
+      <label for="friendName">Your bestie's name or nickname</label>
+      <input id="friendName" placeholder="e.g. Sunshine">
+      <label for="personalMessage">Your own special message</label>
+      <textarea id="personalMessage" placeholder="You make my world a little brighter because..."></textarea>
+      <button onclick="saveDetails()">Save my changes ♡</button>
+      <p class="small" id="saveStatus" aria-live="polite"></p>
+    </div>
+    <div style="margin-top:35px">
+      <h3>Send a little shower of love?</h3>
+      <p>Tap the button for a tiny heart surprise.</p>
+      <button onclick="shower()">Make it rain hearts 💗</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>Made of memories, sealed with love. ♡</p>
+  <p class="small">A little reminder that our friendship matters.</p>
+</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+
+function go(id) {
+  $(id).scrollIntoView({behavior:'smooth'});
+}
+
+function saveDetails() {
+  const you = $('yourName').value.trim() || 'your forever bestie';
+  const friend = $('friendName').value.trim() || 'my favourite human';
+
+  document.querySelectorAll('[data-you]').forEach(el => el.textContent = you);
+  document.querySelectorAll('[data-friend]').forEach(el => el.textContent = friend);
+  $('heroYou').textContent = you;
+  $('heroFriend').textContent = friend;
+
+  const message = $('personalMessage').value.trim();
+  if (message) {
+    $('letterText').textContent = message;
+  }
+
+  $('saveStatus').textContent =
+    'Your changes are applied! Remember to save your edited file to keep them.';
+  shower();
+}
+
+function revealLetter() {
+  $('letterPaper').classList.remove('hidden');
+  $('openLetter').textContent = 'Your letter is open ♡';
+  shower();
+}
+
+function shower() {
+  const container = $('hearts');
+  const symbols = ['♡','♥','💗','💕','✿'];
+  for (let i = 0; i < 24; i++) {
+    const heart = document.createElement('span');
+    heart.className = 'float-heart';
+    heart.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+    heart.style.left = Math.random()*100 + '%';
+    heart.style.fontSize = (15+Math.random()*20) + 'px';
+    heart.style.animationDuration = (3+Math.random()*4) + 's';
+    container.appendChild(heart);
+    heart.addEventListener('animationend', () => heart.remove());
+  }
+}
+
+$('photos').addEventListener('change', event => {
+  const files = Array.from(event.target.files || []);
+  const gallery = $('gallery');
+  gallery.innerHTML = '';
+
+  files.forEach(file => {
+    if (!file.type.startsWith('image/')) return;
+    const card = document.createElement('div');
+    card.className = 'photo';
+    const img = document.createElement('img');
+    img.alt = 'A friendship memory';
+    const caption = document.createElement('input');
+    caption.className = 'photo-caption';
+    caption.placeholder = 'Add a caption ♡';
+    const reader = new FileReader();
+    reader.onload = e => { img.src = e.target.result; };
+    reader.readAsDataURL(file);
+    card.append(img, caption);
+    gallery.appendChild(card);
+  });
+});
+</script>
+</body>
+</html>
